@@ -150,3 +150,171 @@ ReactDOM.render(
   - ```react
     <div id="root"></div>
 
+<br>
+
+### Props
+
+- Property (Component의 속성)의 줄임말
+- Read-Only
+  - 값을 변경할 수 없다.
+  - 붕어빵 다 구워졌는데, 속재료를 바꿀 수 없음...
+  - 다른 props의 값으로 Element를 생성하려면 새로운 값을 컴포넌트에 전달하여 새로운 Element를 생성하여야 한다.
+- 모든 리액트 컴포넌트는 그들의 Props에 관해서는 Pure 함수 같은 역할을 해야한다.
+  - Pure 함수 : 입력값(input)을 변경하지 않으며, 같은 입력값에 대해서는 항상 같은 출력값(output)을 리턴한다.
+- 모든 리액트 컴포넌트는 Props를 직접 바꿀 수 없고, 같은 Props에 대해서는 항상 같은 결과를 보여줄 것!
+
+<br>
+
+### Component
+
+- Component 이름은 항상 대문자로 시작해야 한다.
+
+  - 리액트는 소문자로 시작하는 컴포넌트를 DOM tag로 인식하기 때문이다.
+
+  - HTML div 태그로 인식
+
+    - ```react
+      const element = <div />
+
+  - Welcome 이라는 리액트 Component로 인식
+
+    - ```react
+      const element = <Welcome name="철수" />;
+
+<br>
+
+### Component 추출
+
+- 큰 컴포넌트에서 일부를 추출해서 새로운 컴포넌트를 만들 수 있다.
+- 이를 통해 컴포넌트의 재사용성을 높일 수 있다. 컴포넌트가 작아질수록 기능과 목적이 명확해지고 props도 단순해지기 때문에 다른 곳에서 사용할 수 있을 확률이 높아진다.
+- 재사용성이 높아지면서 개발속도도 향상된다.
+
+<br>
+
+### State
+
+- 리액트 Component의 상태 = 리액트 Component의 데이터
+- 리액트 Component의 변경 가능한 데이터
+
+- 렌더링이나 데이터 흐름에 사용되는 값만 state에 포함시켜야 한다.
+
+- state는 자바스크립트 객체이다.
+- state를 변경하고자 할때는 setState를 사용해야 한다.
+
+<br>
+
+### Lifecycle
+
+- 리액트 Component의 생명주기
+- Mounting → Updating → Unmounting
+- 순서에 따라 각각의 함수 사용 (componentDidMount → componentDidUpdate → componentWillUnmount)
+- Component는 계속 존재하는 것이 아니라, 시간의 흐름에 따라 생성되고 업데이트 되다가 사라진다.
+
+<br>
+
+### Hooks
+
+- Class Component는 생성자에서 state를 정의하고, setState() 함수를 통해 state를 업데이트할 수 있다. 그리고 Lifecycle methods를 제공한다. 반면에 Function Component는 state 사용이 불가능하고, Lifecycle에 따른 기능 구현이 불가능하다. 그래서 이러한 부분을 지원하기 위해서 Hooks이 개발되었다.
+
+- Hooks은 각 기능을 사용하겠다는 의미에서 use- 로 시작한다. 
+
+- 대표적인 Hooks
+
+  - useState()
+
+    - state를 사용하기 위한 Hook
+
+    - ``` react
+      const [변수명, set함수명] = useState(초기값);
+
+    - ![image-20221130201336001](README.assets/image-20221130201336001.png)
+
+  - useEffect()
+
+    - 일반적인 의미의 Side effect는 개발자가 의도하지 않은 코드가 실행되면서 버그가 나타나는 것을 뜻한다.
+
+    - React에서 Side effect는 위의 의미와는 다르다. effect는 서버에서 데이터를 받아오거나 수동으로 DOM을 변경하는 등의 작업을 의미하고, 다른 컴포넌트에 영향을 미칠 수 있으며, 렌더링 중에는 작업이 완료될 수 없다. 그래서 이러한 작업들이 Side로 실행된다는 의미에서 Side effect라고 불리며, useEffect()는 리액트의 함수 컴포넌트에서 Side effect를 실행할 수 있게 해주는 Hook이다.
+
+    - ```react
+      의존성 배열 안의 변수가 하나라도 값이 변경되면 이펙트 함수가 실행된다.
+      useEffect(이펙트 함수, 의존성 배열);
+
+    - ```react
+      Effect function이 mount, unmount시에 단 한번씩만 실행됨
+      useEffect(이펙트 함수, []);
+
+    - ```
+      의존성 배열을 생략하면 컴포넌트가 업데이트될 때마다 호출됨
+      useEffect(이펙트 함수)
+
+    - ![image-20221130202929920](README.assets/image-20221130202929920.png)
+
+    - ![image-20221130203319646](README.assets/image-20221130203319646.png)
+
+  - useMemo()
+
+    - Memoized value를 리턴하는 Hook
+    - Memoization : 최적화를 위해서 사용되는 개념. 연산량이 많이 드는 함수의 호출 결과를 저장해 두었다가 같은 입력값으로 함수를 호출하면 새로 함수를 호출하지 않고 이전에 저장해두었던 호출 결과를 바로 반환하는 것. 불필요한 중복 연산을 수행하지 않기 때문에 컴퓨터의 자원을 적게 쓰게 된다.
+    - ![image-20221130204025835](README.assets/image-20221130204025835.png)
+
+    - 렌더링이 될 때 수행되기 때문에 렌더링이 되는 동안 실행되면 안되는 작업들은 useMemo()에 넣으면 안된다. 
+
+    - ```react
+      의존성 배열을 넣지 않을 경우, 매 렌더링마다 함수가 실행됨
+      const memoizedValue = useMemo(
+      	() => computeExpensiveValue(a, b)
+      );
+      
+      따라서 useMemo() Hook에 의존성 배열을 넣지 않고 실행하는 것은 아무 의미가 없다.
+
+    - ```react
+      의존성 배열이 빈 배열일 경우, 컴포넌트 마운트 시에만 호출됨
+      const memoizedValue = useMemo(
+      	() => {
+      		return computeExpensiveValue(a, b);
+      	},
+      	[]
+      );
+
+  - useCallback()
+
+    - useMemo() Hook과 유사하지만 값이 아닌 함수를 반환한다.
+    - ![image-20221130204828304](README.assets/image-20221130204828304.png)
+
+    - ```react
+      동일한 역할을 하는 두 줄의 코드
+      useCallback(함수, 의존성 배열);
+      useMemo(() => 함수, 의존성 배열);
+
+  - useRef()
+
+    - Reference를 사용하기 위한 Hook
+
+    - Reference란, 특정 컴포넌트에 접근할 수 있는 객체
+
+    - refObject.current → .current는 현재 참조하고 있는 Element를 의미
+
+    - ```
+      useRef() 사용법
+      const refContainer = useRef(초깃값);
+
+    - ![image-20221130205559540](README.assets/image-20221130205559540.png)
+
+<br>
+
+### Hook의 규칙
+
+- Hook은 무조건 최상위 레벨에서만 호출해야 한다.
+  - Hook은 컴포넌트가 렌더링될 때마다 매번 같은 순서로 호출되어야 한다.
+- 리액트 함수 컴포넌트에서만 Hook을 호출해야 한다.
+
+<br>
+
+### Custom Hook 만들기
+
+- Custom Hook을 만들어야 하는 상황
+  - 두 개의 자바스크립트 함수에서 하나의 로직을 공유하고 싶을 때
+- 이름이 use로 시작하고 내부에서 다른 Hook을 호출하는 하나의 자바스크립트 함수
+- Custom Hook의 이름은 꼭 use로 시작해야 한다.
+- 여러 개의 컴포넌트에서 하나의 Custom Hook을 사용할 때 컴포넌트 내부에 있는 모든 state와 effects는 전부 분리되어 있다.
+  - 각 Custom Hook 호출에 대해서 분리된 state를 얻게 된다.
