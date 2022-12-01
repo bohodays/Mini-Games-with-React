@@ -318,3 +318,46 @@ ReactDOM.render(
 - Custom Hook의 이름은 꼭 use로 시작해야 한다.
 - 여러 개의 컴포넌트에서 하나의 Custom Hook을 사용할 때 컴포넌트 내부에 있는 모든 state와 effects는 전부 분리되어 있다.
   - 각 Custom Hook 호출에 대해서 분리된 state를 얻게 된다.
+
+<br>
+
+### Event
+
+- 리액트의 Event
+
+  - ```react
+    <button onClick={activate}>
+    	Activate
+    </button>
+
+- Event Handler (= Event Listener)
+  - 어떤 사건이 발생하면, 사건을 처리하는 역할
+
+- 클래스에서 사용하는 경우, callback에서 'this'를 사용하기 위해서는 바인딩을 필수적으로 해줘야 한다.
+
+  - 바인딩을 하는 이유는 자바스크립트에서 기본적으로 class 함수들이 바인드되지 않기 때문이다. 바인드하지 않으면 this가 global scope에서 호출된다.
+
+- ```react
+  import React, { useState } from 'react';
+  
+  function ConfirmButton(props) {
+      const [isConfirmd, setIsConfirmed] = useState(false);
+  
+      const handleConfirm = () => {
+          setIsConfirmed((prevIsConfirmed) => !prevIsConfirmed);
+      };
+  
+      return (
+          <button onClick={handleConfirm} disabled={isConfirmd}>
+              {isConfirmd ? "확인됨" : "확인하기"}
+          </button>
+      )
+  }
+  
+  export default ConfirmButton;
+
+<br>
+
+### Argument
+
+- Event Handler에 전달할 데이터
