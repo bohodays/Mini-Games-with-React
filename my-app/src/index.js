@@ -9,8 +9,15 @@ import reportWebVitals from './reportWebVitals';
 // import CommentList from './chapter_05/CommentList';
 // import NotificationList from './chapter_06/NotificationList';
 // import Accommodate from './chapter_07/Accommodate';
-import ConfirmButtonVersionClass from './chapter_08/ConfirmButtonVersionClass';
-import ConfirmButton from './chapter_08/ConfirmButton';
+// import ConfirmButtonVersionClass from './chapter_08/ConfirmButtonVersionClass';
+// import ConfirmButton from './chapter_08/ConfirmButton';
+// import LandingPage from './chapter_09/LandingPage';
+// import AttendanceBook from './chapter_10/AttendanceBook';
+// import SignUp from './chapter_11/SignUp';
+// import Calculator from './chapter_12/Calculator';
+// import ProfileCard from './chapter_13/ProfileCard';
+// import DarkOrLight from './chapter_14/DarkOrLight';
+import Blocks from './chapter_15/Blocks';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -52,12 +59,63 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 // )
 
 // chapter 08
+// root.render(
+//   <React.StrictMode>
+//     <ConfirmButtonVersionClass />
+//     <ConfirmButton />
+//   </React.StrictMode>
+// )
+
+// chapter 09
+// root.render(
+//   <React.StrictMode>
+//     <LandingPage />
+//   </React.StrictMode>
+// )
+
+// chapter 10
+// root.render(
+//   <React.StrictMode>
+//     <AttendanceBook />
+//   </React.StrictMode>
+// )
+
+// chapter 11
+// root.render(
+//   <React.StrictMode>
+//     <SignUp />
+//   </React.StrictMode>
+// )
+
+// chapter 12
+// root.render(
+//   <React.StrictMode>
+//     <Calculator />
+//   </React.StrictMode>
+// )
+
+// chapter 13
+// root.render(
+//   <React.StrictMode>
+//     <ProfileCard />
+//     <ProfileCard />
+//   </React.StrictMode>
+// )
+
+// chapter 14
+// root.render(
+//   <React.StrictMode>
+//     <DarkOrLight />
+//   </React.StrictMode>
+// )
+
+// chapter 15
 root.render(
   <React.StrictMode>
-    <ConfirmButtonVersionClass />
-    <ConfirmButton />
+    <Blocks />
   </React.StrictMode>
 )
+
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

@@ -361,3 +361,148 @@ ReactDOM.render(
 ### Argument
 
 - Event Handler에 전달할 데이터
+
+<br>
+
+### Conditional Rendering
+
+- 조건부 렌더링 : 어떠한 조건에 따라서 렌더링이 달라지는 것
+  - 예를 들어, True이면 버튼을 보여주고, False이면 버튼을 가린다.
+
+<br>
+
+### Element Variables
+
+- Element를 변수처럼 저장해서 사용하는 방법
+
+<br>
+
+### Inline Conditions
+
+- 조건문을 코드 안에 집어넣는 것
+
+- Inline If
+
+  - If문의 경우 && 연산자를 사용 (단축 평가)
+
+  - true && expression → expression
+  - false && expression → false
+
+- Inline If-Else
+  - If-Else문의 경우 ? 연산자를 사용 (삼항 연산자)
+  - condition ? true : false
+
+<br>
+
+### Component 렌더링 막기
+
+- null을 리턴하면 렌더링되지 않음
+
+<br>
+
+### List
+
+- Key : 아이템들을 구분하기 위한 고유한 문자열
+- Key의 값은 같은 List에 있는 Elements 사이에서만 고유한 값이면 된다.
+- 아이템들의 고유한 ID가 없을 경우에만 index를 키로 사용해야 한다.
+- map() 함수 안에 있는 Elements는 꼭 key가 필요하다!
+
+<br>
+
+### Form
+
+- 사용자로부터 입력을 받기 위해 사용
+- HTML Form과 React Form은 다르다.
+- Controlled Components
+  - 값이 리액트의 통제를 받는 Input Form Element
+  - HTML Form : 자체적으로 state를 관리
+  - Controlled Component : 모든 데이터를 state에서 관리
+
+<br>
+
+### Lifting State Up
+
+- Shared State (State에 있는 데이터를 여러 개의 하위 컴포넌트에서 공통적으로 사용하는 경우)
+- 자식 컴포넌트들이 가장 가까운 공통된 부모 컴포넌트의 State를 공유해서 사용하는 것
+- 하위 컴포넌트의 state를 공통 상위 컴포넌트로 올리는 것
+
+<br>
+
+### Composition vs Inheritance
+
+- Composition (합성)
+
+  - 여러 개의 컴포넌트를 합쳐서 새로운 컴포넌트를 만드는 것
+
+  - "여러 개의 컴포넌트들을 어떻게 조합할 것인가?"에 대한 여러가지 사용기법
+
+    - Containment
+      - 하위 컴포넌트를 포함하는 형태의 합성 방법
+      - Sidebar나 Dialog 같은 Box 형태의 컴포넌트는 자신의 하위 컴포넌트를 미리 알 수 없다.
+      - children이라는 prop을 사용해서 조합!
+      - ![code](README.assets/code.png)
+      - ![code1](README.assets/code1.png)
+
+    - Specialization
+      - WelcomeDialog는 Dialog의 특별한 케이스이다.
+      - 기존의 객체지향 언어에서는 상속(Inheritance)을 사용하여 Specialization을 구현
+      - 리액트에서는 합성(Composition)을 사용하여 Specialization을 구현한다!
+      - ![code2](README.assets/code2.png)
+
+    - Containment와 Specialization을 같이 사용하기
+      - ![code3](README.assets/code3.png)
+
+- 복잡한 컴포넌트를 쪼개서 여러 개의 컴포넌트로 만들고, 만든 컴포넌트들을 조합해서 새로운 컴포넌트를 만들자!
+
+<br>
+
+### Context
+
+- 기존에는 컴포넌트의 props를 통해 데이터 전달이 이루어졌다. 여러 컴포넌트에 걸쳐 굉장히 자주 사용되는 데이터의 경우 기존 방식을 사용하면 코드가 복잡해지고 사용하기 불편해진다.
+
+- 언제 Context를 사용해야 할까?
+
+  - 여러 개의 컴포넌트들이 접근해야 하는 데이터
+    - 로그인 여부, 로그인 정보, UI 테마, 현재 언어 등
+  - ![code4](README.assets/code4.png)
+
+  - 위와 같이 Provider와 Consumer를 사용하여 데이터에 접근할 수 있다.
+
+- Context를 사용하기 전에 고려할 점
+
+  - 컴포넌트와 컨텍스트가 연동되면 재사용성이 떨어진다.
+
+<br>
+
+### Context API
+
+- React.createContext()
+
+  - ![code](README.assets/code-16705926856536.png)
+
+  - 만약 상위 레벨에 매칭되는 Provider가 없다면 기본값이 사용됨!
+  - 기본값으로 undefined를 넣으면 기본값이 사용되지 않음.
+
+- Context.Provider
+
+  - ![code](README.assets/code-16705928326968.png)
+
+  - Provider value에서 주의해야 할 사항
+    - Provider 컴포넌트가 재렌더링될 때마다 모든 하위 consumer 컴포넌트가 재렌더링됨. 이를 막기 위해서는 아래와 같이 state를 사용하여 불필요한 재렌더링을 막아야 한다.
+    - ![code](README.assets/code-167059306658010.png)
+
+- Context.Consumer
+  - ![code](README.assets/code-167059322442512.png)
+
+- function as a child
+  - ![code](README.assets/code-167059343223914.png)
+
+- 여러 개의 Context 사용하기
+
+  - ![code](README.assets/code-167059366754516.png)
+
+  - 위와 같이 중첩해서 사용한다.
+
+- Hook을 사용하는 것이 Provider로 감싸는 것보다 좋다!
+  - useContext()
+    - ![code](README.assets/code-167059376378818.png)
