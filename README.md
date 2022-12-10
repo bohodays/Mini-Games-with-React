@@ -506,3 +506,14 @@ ReactDOM.render(
 - Hook을 사용하는 것이 Provider로 감싸는 것보다 좋다!
   - useContext()
     - ![code](README.assets/code-167059376378818.png)
+
+<br>
+
+### 패키지 설치하는 명령어
+
+- 예시
+
+```
+npm install --save react-router-dom styled-components
+```
+
